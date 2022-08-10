@@ -1,9 +1,10 @@
 import React from 'react';
+import Paginate from "./Pagination/Paginate";
 
 const App: React.FC = () => {
     return (
         <div>
-            Hello world :/
+            <Paginate currentPage={1} totalPages={12} />
         </div>
     );
 };

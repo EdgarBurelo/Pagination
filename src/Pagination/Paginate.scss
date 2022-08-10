@@ -1,0 +1,11 @@
+@use 'src/DesignComponents/Styles/_grid.scss' as *;
+@use 'src/DesignComponents/Styles/_colors.scss' as *;
+
+.pagination-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: $unit $unit * 2;
+}
