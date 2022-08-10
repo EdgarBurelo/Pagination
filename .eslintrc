@@ -1,0 +1,19 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "rules": {
+    "import/extensions": "off",
+    "no-trailing-spaces": "warn",
+    "semi": "warn",
+    "object-curly-spacing": "warn",
+    "eol-last": "error",
+    "no-multiple-empty-lines": "error"
+  }
+}
