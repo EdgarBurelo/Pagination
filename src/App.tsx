@@ -4,8 +4,8 @@ import Paginate from "./Pagination/Paginate";
 const App: React.FC = () => {
     const [page, setPage] = useState(1);
     const setPageGenCallback = (page: number) => {
-        console.log(page)
-    }
+        console.log(page);
+    };
 
     return (
         <div>

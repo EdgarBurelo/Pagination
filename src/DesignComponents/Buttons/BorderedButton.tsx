@@ -11,8 +11,7 @@ type ButtonProps = {
 export type BorderedButtonElement = React.FC<ButtonProps>
 
 
-
-const BorderedButton: BorderedButtonElement = ({ id, active, onClick, children}) => {
+const BorderedButton: BorderedButtonElement = ({id, active, onClick, children}) => {
     return (
         <div
             role="button"
@@ -22,6 +21,6 @@ const BorderedButton: BorderedButtonElement = ({ id, active, onClick, children})
         >
             {children}
         </div>
-    )
-}
+    );
+};
 export default BorderedButton;
