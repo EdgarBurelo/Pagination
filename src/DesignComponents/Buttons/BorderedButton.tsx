@@ -8,8 +8,11 @@ type ButtonProps = {
     onClick: (e: React.MouseEvent<HTMLInputElement> & { target: HTMLElement }) => void
 }
 
+export type BorderedButtonElement = React.FC<ButtonProps>
 
-const BorderedButton: React.FC<ButtonProps> = ({ id, active, onClick, children}) => {
+
+
+const BorderedButton: BorderedButtonElement = ({ id, active, onClick, children}) => {
     return (
         <div
             role="button"
