@@ -26,7 +26,6 @@ const Paginate: React.FC<Paginate> = ({ currentPage, totalPages, setPage }) => {
 
     useEffect(() => {
         [start, end] = calculateStart(shownPages, maxDisplayedPages, currentPage, differenceBetweenCurrentAndTotal, totalPages);
-        console.log('recalc', start, end)
     }, [currentPage, totalPages, differenceBetweenCurrentAndTotal, maxDisplayedPages, shownPages])
 
     const buttons = generateButtons(start, end, currentPage, totalPages, onClickPageButton);
@@ -76,12 +75,12 @@ const calculateStart = (
     if (shownPages < maxDisplayedPages) {
         end = shownPages;
         start = 1;
-    } else if(currentPage < shownPages / 2) {
+    } else if(currentPage <= shownPages / 2) {
         end = shownPages;
         start = 1;
-    } else if (differenceBetweenCurrentAndTotal < shownPages / 2) {
-        end = totalPages
-        start = currentPage - (shownPages - differenceBetweenCurrentAndTotal)
+    } else if (differenceBetweenCurrentAndTotal <= shownPages / 2) {
+        end = totalPages;
+        start = currentPage - (shownPages - differenceBetweenCurrentAndTotal) + 1;
     } else if (differenceBetweenCurrentAndTotal > shownPages / 2) {
         end = currentPage + shownPages / 2 - 1;
         start = currentPage - shownPages / 2;
