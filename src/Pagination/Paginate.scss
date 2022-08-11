@@ -9,3 +9,7 @@
   align-items: stretch;
   gap: $unit $unit * 2;
 }
+
+.pagination-container:focus-visible{
+  outline: none;
+}

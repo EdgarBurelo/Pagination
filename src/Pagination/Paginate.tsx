@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import "./Paginate.scss";
 import BorderedButton from "../DesignComponents/Buttons/BorderedButton";
 
@@ -14,25 +14,44 @@ const Paginate: React.FC<Paginate> = ({currentPage, totalPages, setPage}) => {
     if (currentPage > totalPages) throw new Error('The current page can not be bigger that the total pages');
     const maxDisplayedPages = 10;
     const shownPages = totalPages / maxDisplayedPages > 1 ? 10 : totalPages;
-
+    const differenceBetweenCurrentAndTotal = totalPages - currentPage;
+    let [start, end] = calculateStart(shownPages, maxDisplayedPages, currentPage, differenceBetweenCurrentAndTotal, totalPages);
     const onClickPageButton: onClickPageButton = (event) => {
         const pageId: number = parseInt(event.target.id.split("-")[1]);
         setPage(pageId);
         // add Generic callback for the click event over any button
     };
-    const differenceBetweenCurrentAndTotal = totalPages - currentPage;
 
-    let [start, end] = calculateStart(shownPages, maxDisplayedPages, currentPage, differenceBetweenCurrentAndTotal, totalPages);
+    const buttons = generateButtons(start, end, currentPage, totalPages, onClickPageButton);
 
     useEffect(() => {
         [start, end] = calculateStart(shownPages, maxDisplayedPages, currentPage, differenceBetweenCurrentAndTotal, totalPages);
     }, [currentPage, totalPages, differenceBetweenCurrentAndTotal, maxDisplayedPages, shownPages]);
 
-    const buttons = generateButtons(start, end, currentPage, totalPages, onClickPageButton);
+    const [focusButton, setFocusButton] = useState(1);
+    const keyDownHandler = (event: React.KeyboardEvent<HTMLDivElement> & { target: HTMLElement } ) => {
+        const elements: HTMLCollection = event.target.children;
+
+        if(event.code === 'ArrowRight') {
+            const prevElement = elements.item(focusButton - 1) as HTMLElement;
+            if (prevElement) prevElement.style.borderColor = '';
+            setFocusButton(focusButton + 1);
+            const element = elements.item(focusButton) as HTMLElement;
+            if (element) element.style.borderColor = 'blue';
+        }
+
+        if(event.code === 'ArrowLeft') {
+            const prevElement = elements.item(focusButton + 1) as HTMLElement;
+            if (prevElement) prevElement.style.borderColor = '';
+            setFocusButton(focusButton - 1);
+            const element = elements.item(focusButton) as HTMLElement;
+            if (element) element.style.borderColor = 'blue';
+        }
+    };
 
     return (
         <React.Fragment>
-            <div className="pagination-container">
+            <div tabIndex={-1} onKeyDown={keyDownHandler} className="pagination-container">
                 {buttons}
             </div>
         </React.Fragment>
