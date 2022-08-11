@@ -1,28 +1,24 @@
 {
-  "name": "word-search-delux",
+  "name": "pagination",
   "version": "1.0.0",
-  "description": "Word search game",
+  "description": "Pagination",
   "main": "index.js",
   "scripts": {
     "build": "webpack build --config webpack.config.js",
     "dev": "webpack serve --config webpack.config.js",
-    "test": "jest "
+    "test": "jest --watch"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/EdgarBurelo/word-search-delux.git"
+    "url": "git+https://github.com/EdgarBurelo/Pagination.git"
   },
-  "keywords": [
-    "word",
-    "search",
-    "game"
-  ],
+  "keywords": [],
   "author": "Edgar Burelo",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/EdgarBurelo/word-search-delux/issues"
+    "url": "https://github.com/EdgarBurelo/Pagination/issues"
   },
-  "homepage": "https://github.com/EdgarBurelo/word-search-delux#readme",
+  "homepage": "https://github.com/EdgarBurelo/Pagination#readme",
   "devDependencies": {
     "@babel/preset-typescript": "^7.18.6",
     "@testing-library/jest-dom": "^5.16.4",
@@ -40,6 +36,7 @@
     "eslint-loader": "^4.0.2",
     "eslint-webpack-plugin": "^3.2.0",
     "html-webpack-plugin": "^5.5.0",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^28.1.2",
     "jest-environment-jsdom": "^28.1.2",
     "mini-css-extract-plugin": "^2.6.1",
